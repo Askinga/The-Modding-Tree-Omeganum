@@ -1,8 +1,8 @@
 let modInfo = {
-	name: "The Modding Tree",
-	id: "mymod",
+	name: "The Bee Tree",
+	id: "BEES1112",
 	author: "",
-	pointsName: "points",
+	pointsName: "bees",
 	discordName: "",
 	discordLink: "",
 	initialStartPoints: new ExpantaNum (10), // Used for hard resets and new players
@@ -13,7 +13,7 @@ let modInfo = {
 // Set your version in num and name
 let VERSION = {
 	num: "0.0",
-	name: "",
+	name: "Literally nothing",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
