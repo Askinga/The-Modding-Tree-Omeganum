@@ -24,5 +24,12 @@ addLayer("f", {
     hotkeys: [
         {key: "f", description: "F: Reset for flowers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},
+    upgrades: {
+	11: {
+		title: "More Bees",
+		description: "x2 Bee gain.",
+		cost: new ExpantaNum(1)
+	},
+    },		
 })
