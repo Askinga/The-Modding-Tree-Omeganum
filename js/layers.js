@@ -5,6 +5,8 @@ addLayer("f", {
     startData() { return {
         unlocked: true,
 		points: new ExpantaNum(0),
+		best: new ExpantaNum(0),
+		total: new ExpantaNum(0),
     }},
     color: "#F4ACA1",
     requires: new ExpantaNum(10), // Can be a function that takes requirement increases into account
