@@ -238,7 +238,7 @@ function NaNcheck(data, name = "player") {
 		if (data[item] == null) {
 		}
 		else if (Array.isArray(data[item])) {
-			NaNcheck(data[item]);
+			NaNcheck(data[item], name + "." + item);
 		}
 		
 		else if (data[item] !== data[item] || checkOmegaNumNaN(data[item])) {
