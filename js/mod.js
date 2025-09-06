@@ -53,6 +53,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	() => "Your best points is " + format(player.best)
 ]
 
 // Determines when the game "ends"
