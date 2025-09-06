@@ -120,9 +120,9 @@ function fixSave() {
 
 	for (layer in layers) {
 		if (player[layer].best !== undefined)
-			player[layer].best = new ExpantaNum(player[layer].best);
+			player[layer].best = new OmegaNum(player[layer].best);
 		if (player[layer].total !== undefined)
-			player[layer].total = new ExpantaNum(player[layer].total);
+			player[layer].total = new OmegaNum(player[layer].total);
 
 		if (layers[layer].tabFormat && !Array.isArray(layers[layer].tabFormat)) {
 
