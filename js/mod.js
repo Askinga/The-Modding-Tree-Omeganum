@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "The Bee Tree",
+	name: "Difficulty Chart Tree",
 	id: "Kshdjsixh",
 	author: "Askinga/Sanas",
 	pointsName: "bees",
