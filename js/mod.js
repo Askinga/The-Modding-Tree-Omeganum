@@ -2,7 +2,7 @@ let modInfo = {
 	name: "Difficulty Chart Tree",
 	id: "Kshdjsixh",
 	author: "Askinga/Sanas",
-	pointsName: "bees",
+	pointsName: "points",
 	discordName: "",
 	discordLink: "",
 	initialStartPoints: new ExpantaNum (10), // Used for hard resets and new players
