@@ -233,7 +233,7 @@ function setupModInfo() {
 function fixNaNs() {
 	NaNcheck(player);
 }
-function NaNcheck(data) {
+function NaNcheck(data, name = "player") {
 	for (item in data) {
 		if (data[item] == null) {
 		}
@@ -252,7 +252,7 @@ function NaNcheck(data) {
 		else if (data[item] instanceof ExpantaNum) { // Convert to ExpantaNum
 		}
 		else if ((!!data[item]) && (data[item].constructor === Object)) {
-			NaNcheck(data[item]);
+			NaNcheck(data[item], name + "." + item);
 		}
 	}
 }
