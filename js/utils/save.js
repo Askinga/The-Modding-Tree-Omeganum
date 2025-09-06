@@ -243,7 +243,7 @@ function NaNcheck(data) {
 		
 		else if (data[item] !== data[item] || checkOmegaNumNaN(data[item])) {
 			if (!NaNalert) {
-				confirm("Invalid value found in player, named '" + item + "'. Please let the creator of this mod know! You can refresh the page, and you will be un-NaNed.")
+				alert("Invalid value found in player, named '" + item + "'. Please let the creator of this mod know! You can refresh the page, and you will be un-NaNed.")
 				clearInterval(interval);
 				NaNalert = true;
 				return
