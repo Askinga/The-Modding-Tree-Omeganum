@@ -19,6 +19,7 @@ addLayer("f", {
         mult = new ExpantaNum(1)
 		if (hasUpgrade('f', 12)) mult = mult.times(2)
 		if (hasUpgrade('f', 14)) mult = mult.times(upgradeEffect('f', 14))
+		if (hasUpgrade('f', 21)) mult = mult.times(upgradeEffect('f', 21))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -51,7 +52,6 @@ addLayer("f", {
 		unlocked(){ return hasUpgrade('f', 12) },
 		effect(){ return player.f.points.add(1).pow(0.25) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 13)) },
-		tooltip(){ return "(effortlessless+1)<sub>0.25</sub>" },
 	},
 	14: {
 		title: "4",
@@ -60,7 +60,6 @@ addLayer("f", {
 		unlocked(){ return hasUpgrade('f', 13) },
 		effect(){ return new ExpantaNum(player.f.upgrades.length).add(2).div(2) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 14)) },
-		tooltip(){ return "(upgrades+1)/2" },
 	},
 	15: {
 		title: "5",
@@ -69,7 +68,14 @@ addLayer("f", {
 		unlocked(){ return hasUpgrade('f', 14) },
 		effect(){ return new ExpantaNum(player.f.upgrades.length).add(2).div(2) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 15)) },
-		tooltip(){ return "(upgrades+1)/2" },
+	},
+	21: {
+		title: "6",
+		description: "boost effortlessless based on points",
+		cost: new ExpantaNum(300),
+		unlocked(){ return hasUpgrade('f', 15) },
+		effect(){ return player.points.add(1).pow(0.1) },
+		effectDisplay() { return "x"+format(upgradeEffect('f', 21)) },
 	},
     },		
 })
