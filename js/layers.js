@@ -49,7 +49,7 @@ addLayer("f", {
 		cost: new ExpantaNum(7),
 		unlocked(){ return hasUpgrade('f', 12) },
 		effect(){ return player.f.points.add(1).pow(0.25) },
-		effectDisplay() { return "x"+format(upgradeEffect('f', 13))
+		effectDisplay() { return "x"+format(upgradeEffect('f', 13)) },
 	},
     },		
 })
