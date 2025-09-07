@@ -18,6 +18,7 @@ addLayer("f", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new ExpantaNum(1)
 		if (hasUpgrade('f', 12)) mult = mult.times(2)
+		if (hasUpgrade('f', 14)) mult = mult.times(upgradeEffect('f', 14))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -50,6 +51,14 @@ addLayer("f", {
 		unlocked(){ return hasUpgrade('f', 12) },
 		effect(){ return player.f.points.add(1).pow(0.25) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 13)) },
+	},
+	14: {
+		title: "4",
+		description: "boost effortlessless based on effortlessless upgrades bought",
+		cost: new ExpantaNum(20),
+		unlocked(){ return hasUpgrade('f', 13) },
+		effect(){ return new ExpantaNum(player.f.upgrades.length).add(2).div(2) },
+		effectDisplay() { return "x"+format(upgradeEffect('f', 14)) },
 	},
     },		
 })
