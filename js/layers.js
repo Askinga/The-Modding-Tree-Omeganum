@@ -34,14 +34,22 @@ addLayer("f", {
     upgrades: {
 	11: {
 		title: "1",
-		description: "x2 Point gain.",
+		description: "x2 point gain.",
 		cost: new ExpantaNum(1)
 	},
 	12: {
 		title: "2",
-		description: "x2 Effortlessless gain.",
+		description: "x2 effortlessless gain.",
 		cost: new ExpantaNum(3),
 		unlocked(){ return hasUpgrade('f', 11) },
+	},
+	13: {
+		title: "3",
+		description: "boost points based on effortlessless",
+		cost: new ExpantaNum(7),
+		unlocked(){ return hasUpgrade('f', 12) },
+		effect(){ return player.f.points.add(1).pow(0.25) },
+		effectDisplay() { return "x"+format(upgradeEffect('f', 13))
 	},
     },		
 })
