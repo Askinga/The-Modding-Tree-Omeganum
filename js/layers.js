@@ -17,6 +17,7 @@ addLayer("f", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new ExpantaNum(1)
+		if (hasUpgrade('f', 12)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -35,6 +36,12 @@ addLayer("f", {
 		title: "1",
 		description: "x2 Point gain.",
 		cost: new ExpantaNum(1)
+	},
+	12: {
+		title: "2",
+		description: "x2 Effortlessless gain.",
+		cost: new ExpantaNum(3),
+		unlocked(){ return hasUpgrade('f', 11) },
 	},
     },		
 })
