@@ -44,6 +44,7 @@ function getPointGen() {
 	let gain = new ExpantaNum(1)
 	if (hasUpgrade('f', 11)) gain = gain.times(2)
 	if (hasUpgrade('f', 13)) gain = gain.times(upgradeEffect('f', 13))
+	if (hasUpgrade('f', 15)) gain = gain.times(upgradeEffect('f', 15))
 	return gain
 }
 
@@ -54,7 +55,6 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	() => "Your best points is " + format(player.best)
 ]
 
 // Determines when the game "ends"
