@@ -99,7 +99,7 @@ addLayer("f", {
 		description: "boost points based on points and effortlessless",
 		cost: new ExpantaNum(2500),
 		unlocked(){ return hasUpgrade('f', 23) },
-		effect(){ return player.points.add(1).pow(0.025).times(player.f.points.add(1).pow(0.04) },
+		effect(){ return player.points.add(1).pow(0.025).times(player.f.points.add(1).pow(0.04)) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 24)) },
 	},
     },		
