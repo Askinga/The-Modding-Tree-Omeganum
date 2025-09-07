@@ -35,12 +35,12 @@ addLayer("f", {
     upgrades: {
 	11: {
 		title: "1",
-		description: "x2 point gain.",
+		description: "x2 point gain",
 		cost: new ExpantaNum(1)
 	},
 	12: {
 		title: "2",
-		description: "x2 effortlessless gain.",
+		description: "x2 effortlessless gain",
 		cost: new ExpantaNum(3),
 		unlocked(){ return hasUpgrade('f', 11) },
 	},
@@ -59,6 +59,14 @@ addLayer("f", {
 		unlocked(){ return hasUpgrade('f', 13) },
 		effect(){ return new ExpantaNum(player.f.upgrades.length).add(2).div(2) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 14)) },
+	},
+	15: {
+		title: "5",
+		description: "boost points based on effortlessless upgrades bought",
+		cost: new ExpantaNum(75),
+		unlocked(){ return hasUpgrade('f', 14) },
+		effect(){ return new ExpantaNum(player.f.upgrades.length).add(2).div(2) },
+		effectDisplay() { return "x"+format(upgradeEffect('f', 15)) },
 	},
     },		
 })
