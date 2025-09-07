@@ -77,5 +77,13 @@ addLayer("f", {
 		effect(){ return player.points.add(1).pow(0.1) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 21)) },
 	},
+	22: {
+		title: "7",
+		description: "boost points based on points",
+		cost: new ExpantaNum(550),
+		unlocked(){ return hasUpgrade('f', 15) },
+		effect(){ return player.points.add(1).pow(0.075) },
+		effectDisplay() { return "x"+format(upgradeEffect('f', 22)) },
+	},
     },		
 })
