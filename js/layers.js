@@ -20,6 +20,7 @@ addLayer("f", {
 		if (hasUpgrade('f', 12)) mult = mult.times(2)
 		if (hasUpgrade('f', 14)) mult = mult.times(upgradeEffect('f', 14))
 		if (hasUpgrade('f', 21)) mult = mult.times(upgradeEffect('f', 21))
+		if (hasUpgrade('f', 23)) mult = mult.times(upgradeEffect('f', 23))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -81,9 +82,17 @@ addLayer("f", {
 		title: "7",
 		description: "boost points based on points",
 		cost: new ExpantaNum(550),
-		unlocked(){ return hasUpgrade('f', 15) },
+		unlocked(){ return hasUpgrade('f', 21) },
 		effect(){ return player.points.add(1).pow(0.075) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 22)) },
+	},
+	23: {
+		title: "8",
+		description: "boost effortlessless based on effortlessless",
+		cost: new ExpantaNum(1000),
+		unlocked(){ return hasUpgrade('f', 22) },
+		effect(){ return player.f.points.add(1).pow(0.05) },
+		effectDisplay() { return "x"+format(upgradeEffect('f', 23)) },
 	},
     },		
 })
