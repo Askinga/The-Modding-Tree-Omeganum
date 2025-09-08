@@ -33,7 +33,7 @@ addLayer("f", {
         {key: "e", description: "E: Reset for effortlessless", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 	automate(){
-		player.best = player.points.max(player.points, player.best)
+		player.best = ExpantaNum.max(player.points, player.best)
 	},
     layerShown(){return true},
     upgrades: {
@@ -138,7 +138,7 @@ addLayer("f", {
         );
         setBuyableAmount(
           this.layer,
-          this.id,
+          11,
           getBuyableAmount(this.layer, this.id).add(1)
         );
       },
@@ -146,7 +146,7 @@ addLayer("f", {
         let base1 = new ExpantaNum(2);
         let base2 = x;
         let expo = new ExpantaNum(1);
-        return base1.pow(base2.pow(expo));
+        return base1.pow(ExpantaNum.pow(base2, expo));
       },
 	},
 })
