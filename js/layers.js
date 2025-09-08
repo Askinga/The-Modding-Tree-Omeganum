@@ -116,7 +116,7 @@ addLayer("f", {
 	  unlocked(){ return hasUpgrade('f', 25) },
       title: "Effortlessless 1",
       cost(x) {
-        return new Decimal(10).pow(x.add(4);
+        return new ExpantaNum(10).pow(x.add(4));
       },
       display() {
         return (
@@ -143,10 +143,10 @@ addLayer("f", {
         );
       },
       effect(x) {
-        let base1 = new Decimal(2);
+        let base1 = new ExpantaNum(2);
         let base2 = x;
-        let expo = new Decimal(1);
-        return base1.pow(Decimal.pow(base2, expo));
+        let expo = new ExpantaNum(1);
+        return base1.pow(base2.pow(expo));
       },
 	},
 })
