@@ -21,6 +21,8 @@ addLayer("f", {
 		if (hasUpgrade('f', 14)) mult = mult.times(upgradeEffect('f', 14))
 		if (hasUpgrade('f', 21)) mult = mult.times(upgradeEffect('f', 21))
 		if (hasUpgrade('f', 23)) mult = mult.times(upgradeEffect('f', 23))
+		if (hasUpgrade('f', 25) ) mult = mult.times(2)
+		mult = mult.times(buyableEffect('f', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -102,5 +104,49 @@ addLayer("f", {
 		effect(){ return player.points.add(1).pow(0.025).times(player.f.points.add(1).pow(0.04)) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 24)) },
 	},
-    },		
+	25: {
+		title: "10",
+		description: "x2 effortlessless gain and unlock a buyable",
+		cost: new ExpantaNum(3500),
+		unlocked(){ return hasUpgrade('f', 24) },
+	},
+    },
+	buyables: {
+		11: {
+	  unlocked(){ return hasUpgrade('f', 25) },
+      title: "Effortlessless 1",
+      cost(x) {
+        return new Decimal(10).pow(x.add(4);
+      },
+      display() {
+        return (
+          "x2 Effortlessless per level.<br>Cost: " +
+          format(this.cost()) +
+          " Effortlessless<br>Bought: " +
+          format(getBuyableAmount("f", 11)) +
+          "<br>Effect: x" +
+          format(buyableEffect("f", 11)) +
+          " Effortlessless"
+        );
+      },
+      canAfford() {
+        return player[this.layer].points.gte(this.cost());
+      },
+      buy() {
+        player[this.layer].points = player[this.layer].points.sub(
+          this.cost()
+        );
+        setBuyableAmount(
+          this.layer,
+          this.id,
+          getBuyableAmount(this.layer, this.id).add(1)
+        );
+      },
+      effect(x) {
+        let base1 = new Decimal(2);
+        let base2 = x;
+        let expo = new Decimal(1);
+        return base1.pow(Decimal.pow(base2, expo));
+      },
+	},
 })
