@@ -32,9 +32,6 @@ addLayer("f", {
     hotkeys: [
         {key: "e", description: "E: Reset for effortlessless", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-	automate(){
-		player.best = ExpantaNum.max(player.points, player.best)
-	},
     layerShown(){return true},
     upgrades: {
 	11: {
