@@ -115,7 +115,7 @@ addLayer("f", {
       },
       title: "Effortlessless 1",
       cost(x) {
-        return new OmegaNum(10000).times(new OmegaNum(10).pow(x));
+        return new ExpantaNum(10000).times(new ExpantaNum(10).pow(x));
       },
 
       display() {
@@ -146,10 +146,10 @@ addLayer("f", {
         );
       },
       effect(x) {
-        let base1 = new OmegaNum(2);
+        let base1 = new ExpantaNum(2);
         let base2 = x;
-        let exp = new OmegaNum(1);
-        let eff = base1.pow(OmegaNum.pow(base2, exp));
+        let exp = new ExpantaNum(1);
+        let eff = base1.pow(ExpantaNum.pow(base2, exp));
         return eff;
       }
     },
