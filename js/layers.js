@@ -35,7 +35,7 @@ addLayer("f", {
 	automate(){
 		if (player.devSpeed.gt(1)) {
 			alert("Sorry! No Dev Speed in here! I want you to experience the TRUE difficulty of the tree! (it is a difficulty chart tree!)")
-			player.devSpeed = new ExpantaNum(1)
+			player.devSpeed = new OmegaNum(1)
 		}
     },
     layerShown(){return true},
