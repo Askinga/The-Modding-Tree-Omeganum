@@ -120,7 +120,7 @@ addLayer("f", {
 
       display() {
         return (
-          "Boost Effortlessless by x1.25 per purchase." +
+          "Boost Effortlessless by x2.00 per purchase." +
           "<br>Cost: " +
           format(tmp[this.layer].buyables[this.id].cost) +
           " Effortlessless" +
