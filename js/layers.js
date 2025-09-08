@@ -139,7 +139,7 @@ addLayer("f", {
         setBuyableAmount(
           this.layer,
           11,
-          getBuyableAmount(this.layer, this.id).add(1)
+          getBuyableAmount(this.layer, 11).add(1)
         );
       },
       effect(x) {
