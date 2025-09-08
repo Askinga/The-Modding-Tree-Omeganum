@@ -110,40 +110,48 @@ addLayer("f", {
     },
 	buyables: {
 		11: {
-	  unlocked(){ return hasUpgrade('f', 25) },
+      unlocked() {
+        return hasUpgrade("f", 25);
+      },
       title: "Effortlessless 1",
       cost(x) {
-        return new ExpantaNum(10).pow(x.add(4));
+        return new OmegaNum(10000).times(new OmegaNum(10).pow(x));
       },
+
       display() {
         return (
-          "x2 Effortlessless per level.<br>Cost: " +
-          format(this.cost()) +
-          " Effortlessless<br>Bought: " +
-          format(getBuyableAmount("f", 11)) +
-          "<br>Effect: x" +
-          format(buyableEffect("f", 11)) +
-          " Effortlessless"
+          "Boost Effortlessless by x1.25 per purchase." +
+          "<br>Cost: " +
+          format(tmp[this.layer].buyables[this.id].cost) +
+          " Effortlessless" +
+          "<br>Bought: " +
+          getBuyableAmount(this.layer, this.id) +
+          "/1000.<br>Effect: Boost Effortlessless gain by x" +
+          format(buyableEffect(this.layer, this.id))
         );
       },
       canAfford() {
         return player[this.layer].points.gte(this.cost());
       },
+
       buy() {
         player[this.layer].points = player[this.layer].points.sub(
           this.cost()
         );
+
         setBuyableAmount(
           this.layer,
-          11,
-          getBuyableAmount(this.layer, 11).add(1)
+          this.id,
+          getBuyableAmount(this.layer, this.id).add(1)
         );
       },
       effect(x) {
-        let base1 = new ExpantaNum(2);
+        let base1 = new OmegaNum(2);
         let base2 = x;
-        let expo = new ExpantaNum(1);
-        return base1.pow(ExpantaNum.pow(base2, expo));
-      },
+        let exp = new OmegaNum(1);
+        let eff = base1.pow(OmegaNum.pow(base2, exp));
+        return eff;
+      }
+    },
 	},
 })
