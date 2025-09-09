@@ -1,4 +1,4 @@
-setInterval(bugChecks, 1)
+setInterval(bugChecks, 50)
 
 function bugChecks() {
 		if (player.devSpeed !== undefined) {
