@@ -144,6 +144,14 @@ addLayer("f", {
 		cost: new ExpantaNum(10000),
 		unlocked(){ return hasUpgrade('f', 25) },
 	},
+	32: {
+		title: "12",
+		description: "boost effortlessless power based on effortlessless power",
+		cost: new ExpantaNum(25000),
+		unlocked(){ return hasUpgrade('f', 31) },
+		effect(){ return player.f.effortlesslessPower.add(1).pow(0.175) },
+		effectDisplay() { return "x"+format(upgradeEffect('f', 32)) },
+	},
     },
 	buyables: {
 		11: {
@@ -194,6 +202,7 @@ addLayer("f", {
 	update(diff) {
 		let gain = new ExpantaNum(0)
 		if (hasUpgrade('f', 31)) gain = gain.add(1)
+		if (hasUpgrade('f', 32)) gain = gain.times(upgradeEffect('f', 32))
 
 		player.f.ellPowerG = gain
 		gain = gain.times(diff)
