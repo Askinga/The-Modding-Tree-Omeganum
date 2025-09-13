@@ -23,9 +23,10 @@ addLayer("f", {
 		if (hasUpgrade('f', 14)) mult = mult.times(upgradeEffect('f', 14))
 		if (hasUpgrade('f', 21)) mult = mult.times(upgradeEffect('f', 21))
 		if (hasUpgrade('f', 23)) mult = mult.times(upgradeEffect('f', 23))
-		if (hasUpgrade('f', 25) ) mult = mult.times(2)
+		if (hasUpgrade('f', 25)) mult = mult.times(2)
 		mult = mult.times(buyableEffect('f', 11))
 		if (hasUpgrade('f', 31)) mult = mult.times(tmp.f.effP2)
+		if (hasUpgrade('f', 35)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -164,6 +165,12 @@ addLayer("f", {
 		cost: new ExpantaNum(125000),
 		unlocked(){ return hasUpgrade('f', 33) },
 	},
+	35: {
+		title: "15",
+		description: "x3 effortlessless power, effortlessless and points",
+		cost: new ExpantaNum(200000),
+		unlocked(){ return hasUpgrade('f', 34) },
+	},
     },
 	buyables: {
 		11: {
@@ -217,6 +224,8 @@ addLayer("f", {
 		if (hasUpgrade('f', 32)) gain = gain.times(upgradeEffect('f', 32))
 		if (hasUpgrade('f', 33)) gain = gain.times(buyableEffect('f', 11))
 		if (hasUpgrade('f', 34)) gain = gain.times(5)
+		if (hasUpgrade('f', 35)) gain = gain.times(3)
+		
 
 		player.f.ellPowerG = gain
 		gain = gain.times(diff)
