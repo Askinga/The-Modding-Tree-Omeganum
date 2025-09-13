@@ -7,6 +7,8 @@ addLayer("f", {
 		points: new ExpantaNum(0),
 		best: new ExpantaNum(0),
 		total: new ExpantaNum(0),
+		effortlesslessPower: new ExpantaNum(0),
+		ellPowerG: new ExpantaNum(0),
     }},
     color: "#ccffff",
     requires: new ExpantaNum(10), // Can be a function that takes requirement increases into account
@@ -23,6 +25,7 @@ addLayer("f", {
 		if (hasUpgrade('f', 23)) mult = mult.times(upgradeEffect('f', 23))
 		if (hasUpgrade('f', 25) ) mult = mult.times(2)
 		mult = mult.times(buyableEffect('f', 11))
+		if (hasUpgrade('f', 31)) mult = mult.times(tmp.f.effP1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -32,7 +35,35 @@ addLayer("f", {
     hotkeys: [
         {key: "e", description: "E: Reset for effortlessless", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	tabFormat: {
+		"Main": {
+			content: [
+				"main-display",
+				"prestige-button",
+				"resource-display",
+				"blank",
+				"buyables",
+				"upgrades",
+			],
+		},
+		"Effortlessless Power": {
+			unlocked() { return hasUpgrade('f', 31) },
+			content: [
+				"main-display",
+				"prestige-button",
+				"resource-display",
+				"blank",
+				["display-text", function() { return "You have " + format(player.f.effortlesslessPower) + " Effortlessless Power, boosting points by x" + format(tmp.f.effP1) + " and Effortlessless by x" + format(tmp.f.effP2) + ".<br>(" + format(player.f.ellPowerG) + "/sec)" }],
+			],
+		},
+	},
     layerShown(){return true},
+	effP1() {
+		return player.f.effortlesslessPower.add(1).pow(0.1)
+	},
+	effP2() {
+		return player.f.effortlesslessPower.add(1).pow(0.04)
+	},
     upgrades: {
 	11: {
 		title: "1",
@@ -107,6 +138,12 @@ addLayer("f", {
 		cost: new ExpantaNum(3500),
 		unlocked(){ return hasUpgrade('f', 24) },
 	},
+	31: {
+		title: "11",
+		description: "unlock a new currency which boosts points and effortlessless",
+		cost: new ExpantaNum(10000),
+		unlocked(){ return hasUpgrade('f', 25) },
+	},
     },
 	buyables: {
 		11: {
@@ -126,7 +163,7 @@ addLayer("f", {
           " Effortlessless" +
           "<br>Bought: " +
           getBuyableAmount(this.layer, this.id) +
-          "/1000.<br>Effect: Boost Effortlessless gain by x" +
+          "<br>Effect: Boost Effortlessless gain by x" +
           format(buyableEffect(this.layer, this.id))
         );
       },
@@ -153,5 +190,13 @@ addLayer("f", {
         return eff;
       }
     },
+	},
+	update(diff) {
+		let gain = new ExpantaNum(0)
+		if (hasUpgrade('f', 31)) gain = gain.add(1)
+
+		player.f.ellPowerG = gain
+		gain = gain.times(diff)
+		player.f.effortlesslessPower = player.f.effortlesslessPower.add(gain)
 	},
 })
