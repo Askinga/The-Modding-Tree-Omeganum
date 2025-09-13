@@ -158,6 +158,12 @@ addLayer("f", {
 		cost: new ExpantaNum(100000),
 		unlocked(){ return hasUpgrade('f', 32) },
 	},
+	34: {
+		title: "14",
+		description: "x5 effortlessless power",
+		cost: new ExpantaNum(125000),
+		unlocked(){ return hasUpgrade('f', 33) },
+	},
     },
 	buyables: {
 		11: {
@@ -210,6 +216,7 @@ addLayer("f", {
 		if (hasUpgrade('f', 31)) gain = gain.add(1)
 		if (hasUpgrade('f', 32)) gain = gain.times(upgradeEffect('f', 32))
 		if (hasUpgrade('f', 33)) gain = gain.times(buyableEffect('f', 11))
+		if (hasUpgrade('f', 34)) gain = gain.times(5)
 
 		player.f.ellPowerG = gain
 		gain = gain.times(diff)
