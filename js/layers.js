@@ -152,6 +152,12 @@ addLayer("f", {
 		effect(){ return player.f.effortlesslessPower.add(1).pow(0.175) },
 		effectDisplay() { return "x"+format(upgradeEffect('f', 32)) },
 	},
+	33: {
+		title: "13",
+		description: "'Effortlessless 1' affects Effortlessless Power",
+		cost: new ExpantaNum(100000),
+		unlocked(){ return hasUpgrade('f', 32) },
+	},
     },
 	buyables: {
 		11: {
@@ -203,6 +209,7 @@ addLayer("f", {
 		let gain = new ExpantaNum(0)
 		if (hasUpgrade('f', 31)) gain = gain.add(1)
 		if (hasUpgrade('f', 32)) gain = gain.times(upgradeEffect('f', 32))
+		if (hasUpgrade('f', 33)) gain = gain.times(buyableEffect('f', 11))
 
 		player.f.ellPowerG = gain
 		gain = gain.times(diff)
