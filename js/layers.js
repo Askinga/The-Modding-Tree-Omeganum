@@ -13,9 +13,9 @@ addLayer("f", {
 	nodeStyle() {
       	return true ? {
             'color': 'red',
-            'background-image': 'url("resources/download.webp")',
+            'background-image': 'url("resources/Freebie_%28Wolfcube%27s_Version%29.png")',
             'background-position': 'center center',
-            'background-size': '160%',
+            'background-size': '100%',
             'border': '1px solid white'
         } : {
             'background-image': 'radial-gradient(circle at center, #cc0000, #770000)'
