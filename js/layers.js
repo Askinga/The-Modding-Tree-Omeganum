@@ -12,7 +12,7 @@ addLayer("f", {
     }},
 	nodeStyle() {
             'color': 'cyan',
-            'background-image': 'url("resources/Freebie_%28Wolfcube%27s_Version%29.png")',
+            'background-image': 'url("resources/Difficulty1.png")',
             'background-position': 'center center',
             'background-size': '100%',
             'border': '1px solid white'
