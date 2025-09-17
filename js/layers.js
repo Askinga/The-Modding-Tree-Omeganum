@@ -11,7 +11,7 @@ addLayer("f", {
 		ellPowerG: new ExpantaNum(0),
     }},
 	nodeStyle() {
-            'color': 'cyan',
+            'color': 'blue',
             'background-image': 'url("resources/Difficulty1.png")',
             'background-position': 'center center',
             'background-size': '100%',
