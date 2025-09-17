@@ -10,6 +10,17 @@ addLayer("f", {
 		effortlesslessPower: new ExpantaNum(0),
 		ellPowerG: new ExpantaNum(0),
     }},
+	nodeStyle() {
+      	return true ? {
+            'color': 'red',
+            'background-image': 'url("resources/download.webp")',
+            'background-position': 'center center',
+            'background-size': '160%',
+            'border': '1px solid white'
+        } : {
+            'background-image': 'radial-gradient(circle at center, #cc0000, #770000)'
+        }
+    },
     color: "#ccffff",
     requires: new ExpantaNum(10), // Can be a function that takes requirement increases into account
     resource: "Effortlessless", // Name of prestige currency
