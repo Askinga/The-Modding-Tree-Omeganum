@@ -11,11 +11,13 @@ addLayer("f", {
 		ellPowerG: new ExpantaNum(0),
     }},
 	nodeStyle() {
+		return {
             'color': 'blue',
             'background-image': 'url("resources/Difficulty1.png")',
             'background-position': 'center center',
             'background-size': '100%',
             'border': '1px solid white'
+		}
     },
     color: "#ccffff",
     requires: new ExpantaNum(10), // Can be a function that takes requirement increases into account
