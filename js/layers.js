@@ -11,15 +11,11 @@ addLayer("f", {
 		ellPowerG: new ExpantaNum(0),
     }},
 	nodeStyle() {
-      	return true ? {
             'color': 'cyan',
             'background-image': 'url("resources/Freebie_%28Wolfcube%27s_Version%29.png")',
             'background-position': 'center center',
             'background-size': '100%',
             'border': '1px solid white'
-        } : {
-            'background-image': 'radial-gradient(circle at center, #cc0000, #770000)'
-        }
     },
     color: "#ccffff",
     requires: new ExpantaNum(10), // Can be a function that takes requirement increases into account
