@@ -9,6 +9,9 @@ addLayer("f", {
 		total: new ExpantaNum(0),
 		effortlesslessPower: new ExpantaNum(0),
 		ellPowerG: new ExpantaNum(0),
+		xp: new ExpantaNum(0),
+		level: new ExpantaNum(0),
+		levelReq: new ExpantaNum(100),
     }},
 	nodeStyle() {
 		return {
@@ -19,6 +22,10 @@ addLayer("f", {
             'border': '1px solid white'
 		}
     },
+	xpGain(){
+		let gain = new ExpantaNum(1)
+		return gain
+	},
     color: "#ccffff",
     requires: new ExpantaNum(10), // Can be a function that takes requirement increases into account
     resource: "Effortlessless", // Name of prestige currency
@@ -36,6 +43,7 @@ addLayer("f", {
 		mult = mult.times(buyableEffect('f', 11))
 		if (hasUpgrade('f', 31)) mult = mult.times(tmp.f.effP2)
 		if (hasUpgrade('f', 35)) mult = mult.times(3)
+		if (hasUpgrade('f', 41)) mult = mult.times(tmp.f.level1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -66,6 +74,18 @@ addLayer("f", {
 				["display-text", function() { return "You have " + format(player.f.effortlesslessPower) + " Effortlessless Power, boosting points by x" + format(tmp.f.effP1) + " and Effortlessless by x" + format(tmp.f.effP2) + ".<br>(" + format(player.f.ellPowerG) + "/sec)" }],
 			],
 		},
+		"Levels": {
+			unlocked() { return hasUpgrade('f', 31) },
+			content: [
+				"main-display",
+				"prestige-button",
+				"resource-display",
+				"blank",
+				"clickables",
+				["bar", "levelBar"],
+				["display-text", function() { return "Level " + format(player.f.level) + ", boosting Effortlessless by x" + format(tmp.f.level1) }],
+			],
+		},
 	},
     layerShown(){return true},
 	effP1() {
@@ -73,6 +93,9 @@ addLayer("f", {
 	},
 	effP2() {
 		return player.f.effortlesslessPower.add(1).pow(0.04)
+	},
+	level1(){
+		return new ExpantaNum(1.125).pow(player.f.level)
 	},
     upgrades: {
 	11: {
@@ -180,6 +203,12 @@ addLayer("f", {
 		cost: new ExpantaNum(200000),
 		unlocked(){ return hasUpgrade('f', 34) },
 	},
+	41: {
+		title: "16",
+		description: "unlock levels",
+		cost: new ExpantaNum(1e7),
+		unlocked(){ return hasUpgrade('f', 35) },
+	},
     },
 	buyables: {
 		11: {
@@ -239,5 +268,26 @@ addLayer("f", {
 		player.f.ellPowerG = gain
 		gain = gain.times(diff)
 		player.f.effortlesslessPower = player.f.effortlesslessPower.add(gain)
+	},
+	clickables: {
+    11: {
+        title() {return "Gain XP"},
+		display() {return "Gain " + format(tmp.f.xpGain) + "XP on click"},
+        canClick() {return hasUpgrade('f', 41)},
+		onClick(){
+			player.f.xp = player.f.xp.add(tmp.f.xpGain)
+		},
+    },
+	},
+	bars: {
+    levelBar: {
+        direction: RIGHT,
+        width: 300,
+        height: 25,
+        progress() { return player.f.xp.div(player.f.levelReq) },
+		display() { return "" + format((player.f.xp.div(player.f.levelReq)).times(100)) + "%" },
+		fillStyle: { 'background-color': "#25cc25" },
+		baseStyle: { 'background-color': "#cc5555" },
+    },
 	},
 })
