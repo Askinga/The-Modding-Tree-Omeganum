@@ -268,6 +268,12 @@ addLayer("f", {
 		player.f.ellPowerG = gain
 		gain = gain.times(diff)
 		player.f.effortlesslessPower = player.f.effortlesslessPower.add(gain)
+
+		if (player.f.xp.gte(player.f.levelReq)) {
+			player.f.xp = new ExpantaNum(0),
+			player.f.level = player.f.level.add(1)
+			player.f.levelReq = new ExpantaNum(100).times(new ExpantaNum(1.5).pow(player.f.level))
+		}
 	},
 	clickables: {
     11: {
