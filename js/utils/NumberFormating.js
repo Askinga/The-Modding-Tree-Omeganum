@@ -2,7 +2,7 @@
 function exponentialFormat(num, precision, mantissa = true) {
     let e = num.log10().floor()
     let m = num.div(OmegaNum.pow(10, e))
-    if (m.toStringWithDecimalPlaces(precision) == 10) {
+    if (m.toStringWithDecimalPlaces(precision) == "10") {
         m = OmegaNumOne
         e = e.add(1)
     }
