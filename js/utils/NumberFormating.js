@@ -74,7 +74,7 @@ function format(decimal, precision = 2, small=false) {
     }
     else if(precision==0){mantissa = m[0]+"."+m[1].substring(0,2)}
     else mantissa = m[0]+"."+m[1].substring(0,precision)
-    return mantissa+"e"+exp.toString()
+    return mantissa+exp.toString()
   }
   else if(decimal.lt("10^^5")){
     let part1 = "e".repeat(egg(decimal.array[1])+1 - (decimal.gte(EN.E_MAX_SAFE_INTEGER)))
