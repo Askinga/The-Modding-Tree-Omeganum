@@ -74,7 +74,7 @@ function format(decimal, precision = 2, small=false) {
     }
     else if(precision==0){mantissa = m[0]+"."+m[1].substring(0,2)}
     else mantissa = m[0]+"."+m[1].substring(0,precision)
-    return mantissa+exp.toString()
+    return mantissa+"e"+exp.toString()
   }
   else if(decimal.lt("10^^5")){
     let part1 = "e".repeat(egg(decimal.array[1])+1 - (decimal.gte(EN.E_MAX_SAFE_INTEGER)))
@@ -82,7 +82,7 @@ function format(decimal, precision = 2, small=false) {
       decimal.array.pop()
       return part1+format(decimal)
     }
-    return "e"+format(decimal.log10())
+    return format(decimal.log10())
   }
   else if(decimal.lt("10^^^5")){
     let part1 = "F".repeat(egg(decimal.array[2])+1 - (decimal.gte(EN.TETRATED_MAX_SAFE_INTEGER)))
