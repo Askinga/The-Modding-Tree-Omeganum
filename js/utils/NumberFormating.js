@@ -1,7 +1,15 @@
 
 function exponentialFormat(num, precision, mantissa = true) {
-  
-    return num.toStringWithDecimalPlaces(precision)
+    let e = num.log10().floor()
+    let m = num.div(ExpantaNum.pow(10, e))
+    if (m.toStringWithDecimalPlaces(precision) == 10) {
+        m = ExpantaNumOne
+        e = e.add(1)
+    }
+    e = (e.gte(1e9) ? format(e, 3) : (e.gte(10000) ? commaFormat(e, 0) : e.toStringWithDecimalPlaces(0)))
+    if (mantissa)
+        return m.toStringWithDecimalPlaces(precision) + "e" + e
+    else return "e" + e
 }
 
 function commaFormat(num, precision) {
@@ -76,13 +84,11 @@ function format(decimal, precision = 2, small=false) {
     else mantissa = m[0]+"."+m[1].substring(0,precision)
     return mantissa+"e"+exp.toString()
   }
+  else if(decimal.lt("e1000000")){
+    return exponentialFormat(decimal, 0)
+  }
   else if(decimal.lt("10^^5")){
-    let part1 = "e".repeat(egg(decimal.array[1])+1 - (decimal.gte(EN.E_MAX_SAFE_INTEGER)))
-    if(part1 != "e") {
-      decimal.array.pop()
-      return part1+format(decimal)
-    }
-    return format(decimal.log10())
+    return exponentialFormat(decimal, 0, false)
   }
   else if(decimal.lt("10^^^5")){
     let part1 = "F".repeat(egg(decimal.array[2])+1 - (decimal.gte(EN.TETRATED_MAX_SAFE_INTEGER)))
